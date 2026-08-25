@@ -337,6 +337,11 @@
                 justify-content: center;
             }
 
+            .dashboard-shell .truncate {
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+
             .shell {
                 width: min(100% - 28px, 1240px);
             }
@@ -347,7 +352,7 @@
 <body class="relative">
     <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all">
         <div class="max-w-[1320px] mx-auto px-5 lg:px-10 h-[74px] flex items-center justify-between">
-            <a href="#top" class="flex items-center" aria-label="BuildDreams InfraTrack home" data-testid="nav-logo">
+            <a href="https://www.builddreams.co.in/" class="flex items-center" aria-label="BuildDreams InfraTrack home" data-testid="nav-logo">
                 <img src="assets/images/builddreams.png" alt="BuildDreams logo" class="h-10 w-auto" loading="eager" />
                 <span class="hidden sm:inline-flex ml-3 font-mono text-[11px] text-navy/50">/ SMART INVENTORY</span>
             </a>
@@ -366,14 +371,14 @@
 
     <main id="top">
         <section class="hero pt-[104px] pb-10 lg:pb-14">
-            <div class="max-w-[1320px] mx-auto px-5 lg:px-10 grid lg:grid-cols-[1fr_560px] gap-10 items-center">
-                <div class="max-w-3xl">
+            <div class="max-w-[1320px] mx-auto px-5 lg:px-10 grid lg:grid-cols-[minmax(0,1fr)_560px] gap-10 items-center">
+                <div class="max-w-3xl min-w-0">
                     <div class="chip reveal">
                         <i data-lucide="radio-tower" class="w-3.5 h-3.5"></i>
                         INFRATRACK · B2B OPERATIONS COMMAND CENTER
                     </div>
                     <h1
-                        class="reveal mt-6 text-[42px] sm:text-[56px] lg:text-[74px] leading-[1.02] font-semibold text-navy">
+                        class="reveal mt-6 text-[42px] sm:text-[56px] xl:text-[74px] leading-[1.02] font-semibold text-navy">
                         Infrastructure visibility. Without the chaos.
                         InfraTrack keeps everything in sync.
                     </h1>
@@ -998,7 +1003,7 @@
         <div
             class="max-w-[1320px] mx-auto px-5 lg:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div class="flex items-center gap-3 text-white">
-                <img src="assets/images/builddreams.png" alt="BuildDreams logo" class="h-8 w-auto" loading="lazy" />
+                <a href="https://www.builddreams.co.in/"><img src="assets/images/builddreams.png" alt="BuildDreams logo" class="h-8 w-auto" loading="lazy" /></a>
                 <span class="font-medium">BuildDreams · InfraTrack</span>
             </div>
             <div class="flex flex-wrap gap-5 text-[13px] text-white/55">

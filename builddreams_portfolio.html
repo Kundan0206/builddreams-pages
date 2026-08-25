@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildDreams Technologies Portfolio</title>
+  <style>
+    :root {
+      --navy: #021346;
+      --teal: #009599;
+      --teal-light: #00b8bd;
+      --teal-pale: #e6f7f7;
+      --navy-mid: #0a2460;
+      --gold: #f5a623;
+      --light-gray: #f4f6fa;
+      --mid-gray: #8892a4;
+      --dark-gray: #2d3748;
+      --divider: #d0d8e8;
+      --body: #334155;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--dark-gray);
+      background: #fafbff;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+      background: var(--white);
+    }
+
+    header,
+    section {
+      margin-bottom: 36px;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, var(--navy) 0%, #081a48 70%, var(--teal) 100%);
+      color: var(--white);
+      padding: 48px 40px;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -10%;
+      top: 0;
+      width: 400px;
+      height: 400px;
+      background: rgba(0, 181, 189, 0.12);
+      border-radius: 50%;
+      filter: blur(24px);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.8rem, 3.5vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .hero h2 {
+      margin: 0 0 20px;
+      font-size: 1.75rem;
+      color: var(--teal-light);
+      line-height: 1.1;
+    }
+
+    .hero p {
+      margin: 0 0 1rem;
+      max-width: 650px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero .strap {
+      display: inline-flex;
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .hero-footer {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(100px, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      background: var(--teal-pale);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .stat h3 {
+      margin: 0 0 6px;
+      font-size: 1.15rem;
+      color: var(--teal);
+    }
+
+    .stat p {
+      margin: 0;
+      color: var(--dark-gray);
+      font-size: 0.85rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: var(--navy);
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--mid-gray);
+      font-size: 0.98rem;
+    }
+
+    .two-grid,
+    .three-grid,
+    .services-grid,
+    .cards-grid,
+    .products-grid,
+    .testimonials-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .two-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .panel,
+    .card,
+    .product-card,
+    .testimonial {
+      border-radius: 18px;
+      background: var(--light-gray);
+      padding: 22px;
+      border: 1px solid var(--divider);
+    }
+
+    .panel h3,
+    .card h3,
+    .product-card h3,
+    .testimonial h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-size: 1.05rem;
+    }
+
+    .panel p,
+    .card p,
+    .product-card p,
+    .testimonial p,
+    .testimonial .meta {
+      margin: 0;
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+    }
+
+    .panel .label,
+    .product-card .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--teal);
+      border-radius: 999px;
+      padding: 6px 10px;
+      width: fit-content;
+    }
+
+    .product-card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card p {
+      line-height: 1.5;
+    }
+
+    .service-list,
+    .feature-list,
+    .contact-list,
+    .sector-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .service-list li,
+    .feature-list li,
+    .sector-list li,
+    .contact-list li {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .service-list li::before,
+    .feature-list li::before,
+    .sector-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .contact-list li {
+      border-bottom: 1px solid var(--divider);
+      padding: 12px 0 12px 0;
+      font-size: 0.96rem;
+      color: var(--dark-gray);
+    }
+
+    .contact-list li strong {
+      color: var(--navy);
+      display: inline-block;
+      width: 110px;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border-color: rgba(0,0,0,0.06);
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testimonial p {
+      font-size: 0.96rem;
+      color: var(--dark-gray);
+    }
+
+    .testimonial .meta {
+      margin-top: 16px;
+      font-size: 0.86rem;
+      color: var(--mid-gray);
+    }
+
+    .cta-banner {
+      background: var(--teal);
+      color: var(--white);
+      text-align: center;
+      padding: 26px 20px;
+      border-radius: 18px;
+      margin-top: 24px;
+      font-size: 1rem;
+    }
+
+    footer {
+      padding: 20px 0 8px;
+      color: var(--mid-gray);
+      border-top: 1px solid var(--divider);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      font-size: 0.92rem;
+    }
+
+    footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-footer,
+      .two-grid,
+      .three-grid,
+      .products-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { padding: 0; box-shadow: none; }
+      header, section { page-break-inside: avoid; }
+      .hero { border-radius: 0; }
+      .page { margin: 0; }
+      footer { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <header class="hero">
+      <div class="hero__content">
+        <p class="strap">BuildDreams Technologies — Custom SaaS · Product Licensing · Tech Consultancy</p>
+        <h1>Modern software for enterprises that need results, not prototypes.</h1>
+        <h2>Custom SaaS products, rapid white-label licensing, and strategic technology advisory.</h2>
+        <p>BuildDreams Technologies is a Nagpur-based MSME enterprise delivering production-grade SaaS platforms, workflow automation, AI-enabled products, and trusted engineering consultancy for mid-market businesses across India.</p>
+      </div>
+
+      <div class="hero-footer">
+        <div class="stat"><h3>13+</h3><p>SaaS Products Built</p></div>
+        <div class="stat"><h3>50+</h3><p>Institutions Served</p></div>
+        <div class="stat"><h3>50K+</h3><p>Students Impacted</p></div>
+        <div class="stat"><h3>200+</h3><p>Companies Onboarded</p></div>
+        <div class="stat"><h3>MSME</h3><p>Registered Enterprise</p></div>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>About BuildDreams</h2>
+          <p>We build dependable software products, license ready SaaS solutions, and advise businesses on technology strategy with an execution-first approach.</p>
+        </div>
+      </div>
+      <div class="two-grid">
+        <div class="panel">
+          <h3>What we do</h3>
+          <p>BuildDreams Technologies is registered as UDYAM-MH-20-0340233. We design, build, and deploy production-ready SaaS tools, workflow automation systems, and enterprise platforms for healthcare, finance, government, manufacturing, real estate, education, logistics, and retail.</p>
+        </div>
+        <div class="panel">
+          <h3>Why we win</h3>
+          <p>Our strength lies in practical delivery: we map real workflows first, avoid prototype shortcuts, and create software that works under real operational load.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>Core capabilities</h2>
+          <p>Three ways we help organizations move faster and operate better.</p>
+        </div>
+      </div>
+      <div class="three-grid services-grid">
+        <div class="card">
+          <span class="label">Custom SaaS</span>
+          <h3>End-to-end product development</h3>
+          <p>Built for your workflows, scaling requirements, and business context. Includes architecture, staging deployments, and launch support.</p>
+        </div>
+        <div class="card">
+          <span class="label">Product Licensing</span>
+          <h3>White-label SaaS ready fast</h3>
+          <p>Deploy proven products immediately with branding, configuration, and integration support for a faster time-to-market.</p>
+        </div>
+        <div class="card">
+          <span class="label">Technology Advisory</span>
+          <h3>Strategy, architecture, AI guidance</h3>
+          <p>We assess your stack, reduce technical debt, recommend architecture, and guide AI adoption where it actually creates value.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>How we engage</h2>
+          <p>Flexible delivery models for product work, support, licensing, and advisory.</p>
+        </div>
+      </div>
+      <div class="two-grid">
+        <div class="panel">
+          <h3>Fixed-price projects</h3>
+          <p>Defined scope, milestones, and delivery expectations. Ideal for clearly scoped SaaS builds and product launches.</p>
+        </div>
+        <div class="panel">
+          <h3>Retainer / AMC</h3>
+          <p>Ongoing development, maintenance, and support to keep your software secure, stable, and continuously improved.</p>
+        </div>
+        <div class="panel">
+          <h3>License + Support</h3>
+          <p>One-time product license fee with annual support, hosting, and customisation options for faster deployment.</p>
+        </div>
+        <div class="panel">
+          <h3>Consulting sprint</h3>
+          <p>Short focused advisory engagements for architecture reviews, product roadmaps, and AI readiness assessments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>Product portfolio</h2>
+          <p>13+ production-ready SaaS platforms across operations, compliance, education, finance, and AI.</p>
+        </div>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <span class="tag">Enterprise</span>
+          <h3>FlowGuard</h3>
+          <p>Browser lockdown, workflow enforcement, and live compliance monitoring for banking, healthcare, and government desks. Offline-first. ₹499/device/month.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">B2B Ops</span>
+          <h3>InfraTrack</h3>
+          <p>Configurable operations platform for asset management, maintenance, approvals, tickets, and revenue tracking.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">Helpdesk</span>
+          <h3>Nivaran</h3>
+          <p>Structured service request routing and tracking with audit trails and escalation logic.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">Vision AI</span>
+          <h3>PartSight AI</h3>
+          <p>Visual inventory and part recognition platform for manufacturing, MRO, and equipment management.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">AI Platform</span>
+          <h3>Vision AI</h3>
+          <p>Customizable visual detection workflows for image upload, camera capture, and monitoring use cases.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">Comms SaaS</span>
+          <h3>WhatsApp Automation</h3>
+          <p>Compliant WhatsApp Business communication platform using your approved account, with consent-first messaging.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">EdTech</span>
+          <h3>Aspira</h3>
+          <p>White-label career ecosystem for students, mentors, and companies — ready to brand and launch.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">PropTech</span>
+          <h3>FlatWala</h3>
+          <p>Property marketplace with buyer, seller, and admin workflows for fast go-live and simple configuration.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">FinTech</span>
+          <h3>UnitPay</h3>
+          <p>QR-based rewards and payouts with secure one-time claim tokens for loyalty and incentive programs.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">Voice AI</span>
+          <h3>VocalNode</h3>
+          <p>Voice AI platform for call automation, IVR replacement, and conversational workflows in customer service.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">AI/ML</span>
+          <h3>FlexiRAG</h3>
+          <p>Retrieval-augmented generation pipeline that turns enterprise documents into accurate AI responses.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">Productivity</span>
+          <h3>Sutra</h3>
+          <p>AI-powered planning tool that converts goals, habits, and notes into structured daily action plans.</p>
+        </div>
+        <div class="product-card">
+          <span class="tag">AI Sales</span>
+          <h3>Sales Chatbot</h3>
+          <p>Configurable sales bot for lead qualification and demos, built for websites and WhatsApp channels.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>Sectors & technology</h2>
+          <p>Proven delivery across industries with a modern, pragmatic technology stack.</p>
+        </div>
+      </div>
+      <div class="two-grid sector-list">
+        <div class="panel"><h3>Banking & NBFC</h3><p>Compliance dashboards, agent monitoring, KYC workflow, audit systems.</p></div>
+        <div class="panel"><h3>Healthcare</h3><p>Front-desk locking, patient flow management, diagnostic chain operations.</p></div>
+        <div class="panel"><h3>Government & PSU</h3><p>CSC kiosk management, citizen service portals, multi-location monitoring.</p></div>
+        <div class="panel"><h3>Manufacturing & MRO</h3><p>Visual parts recognition, inventory automation, maintenance ticketing.</p></div>
+        <div class="panel"><h3>Real Estate</h3><p>Property marketplaces, buyer verification, project progress tracking.</p></div>
+        <div class="panel"><h3>Education & EdTech</h3><p>Career platforms, student management, mentor-company matching ecosystems.</p></div>
+        <div class="panel"><h3>Logistics & Fleet</h3><p>Fleet tracking, route management, driver compliance, reporting.</p></div>
+        <div class="panel"><h3>Hospitality & Retail</h3><p>QR-based loyalty, reward disbursement, and multi-outlet management.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>Delivery process</h2>
+          <p>A practical, milestone-driven approach from discovery to support.</p>
+        </div>
+      </div>
+      <div class="three-grid">
+        <div class="card"><h3>01 Discovery</h3><p>Requirements workshop, workflow mapping, and constraint identification.</p></div>
+        <div class="card"><h3>02 Architecture</h3><p>System design, schema, API contracts, and stack finalisation.</p></div>
+        <div class="card"><h3>03 Build</h3><p>Iterative sprints with staging deployments and regular client reviews.</p></div>
+        <div class="card"><h3>04 QA & Testing</h3><p>Load testing, edge-case coverage, security review, and UAT.</p></div>
+        <div class="card"><h3>05 Deploy</h3><p>Production launch, documentation handover, and team training.</p></div>
+        <div class="card"><h3>06 Support</h3><p>Post-launch monitoring, bug fixes, AMC, and iteration planning.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>Client testimonials</h2>
+          <p>Real outcomes from real deployments.</p>
+        </div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial"><p>We had 22 KYC desks across 4 branches and zero visibility into what agents were doing. FlowGuard gave us a live compliance dashboard in 2 weeks. Our team saved 6 hours a week on manual log verification.</p><p class="meta">Priya Sharma · Private NBFC, Mumbai</p></div>
+        <div class="testimonial"><p>We deployed FlowGuard across 40 government CSC kiosks in three districts. The offline-first architecture was the deciding factor — our locations have unreliable connectivity. No missed filings since go-live.</p><p class="meta">Ramesh Patil · Government Services Integrator, Nashik</p></div>
+        <div class="testimonial"><p>Front-desk PCs were being used for personal browsing during patient check-in. After FlowGuard, every interaction is logged and browser-locked. Works perfectly even when our hospital's internet drops.</p><p class="meta">Dr. Anand Mehta · Diagnostic Chain, Pune</p></div>
+        <div class="testimonial"><p>Our team stopped missing follow-ups. The workflow system gives us a clear daily run-of-show. We went from chaos to clarity in about three weeks of deployment.</p><p class="meta">Rohan Iyer · Operations Lead, Bangalore</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>Contact & credentials</h2>
+          <p>Reach out for product licensing, custom builds, or technology strategy sessions.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <ul class="contact-list">
+          <li><strong>Website</strong> builddreams.co.in</li>
+          <li><strong>Email</strong> suhomatech@gmail.com</li>
+          <li><strong>Phone</strong> +91 93568 73562</li>
+          <li><strong>Address</strong> Plot No. 11, Maa Padmavati Nagar, Bokde Layout, Nagpur 440034, Maharashtra, India</li>
+          <li><strong>Registration</strong> UDYAM-MH-20-0340233 · MSME Registered Enterprise</li>
+        </ul>
+      </div>
+      <div class="cta-banner">Ready to build? Request an intro call at builddreams.co.in</div>
+    </section>
+
+    <footer>
+      <span>BuildDreams Technologies · Nagpur, Maharashtra</span>
+      <span>Custom SaaS · Product Licensing · AI Strategy</span>
+    </footer>
+  </article>
+</body>
+</html>
